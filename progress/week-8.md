@@ -3,6 +3,7 @@
 Minggu ke 8
 ---------------------------------
 bikin tabel view dari tabel^2^ berikut
+
 - [x] satuan
 
 ```sql 
@@ -41,8 +42,37 @@ join satuan sat on b.idsatuan = sat.idsatuan
 
 ```
 
-- [ ] vendor
+- [x] vendor
+dml dulu ngubah data dari vendor
+```sql
+-- update data
+update vendor 
+set nama_vendor = "Logitik Indonesia Utama", badan_hukum = 'P', status = 'A'
+where idvendor = 1;
 
+update vendor 
+set nama_vendor = "WinTech Solusindo", badan_hukum = 'P', status = 'A'
+where idvendor = 2;
+
+update vendor 
+set nama_vendor = "Rival Gear Nusantara", badan_hukum = 'C', status = 'A'
+where idvendor = 3;
+
+-- bikin view
+create or replace view vendor_v as 
+select concat(
+(case
+  when badan_hukum = 'P' then 'PT.'
+  when badan_hukum = 'C' then 'CV.'
+end), 
+nama_vendor) as Vendor, 
+case 
+  when status = 'A' then 'Aktif'
+  when status = 'N' then 'Nonaktif'
+end as Status
+from vendor;
+
+```
 
 
 - [x] role

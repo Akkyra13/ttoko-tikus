@@ -8,6 +8,7 @@
 | 4 Oktober | 5:30 - 6:30 | Selesaiin DML(selain tabel barang) | query buffer lupa di save |
 | 5 Oktober | 11:30 - 13:00 | menentukan barang yang mau dijual dan meneyelsaikan DML | salah masukkin data, harus truncate tabel barang |
 | 15 Oktober | 11:40 - 12:10 | membuat tabel view untuk setiap tabel data utama | jujur masih bingung ini kolom hukum dan status untuk vendor maskudnya apa |
-| 16 Oktober | 8:00 -  | bikin repo github dan rapihin folder proyek | baru belajar make github hehe |
+| 16 Oktober | 8:00 - 8:30 | bikin repo github dan rapihin folder proyek | baru belajar make github hehe |
+| 19 Oktober | 20:00 - 20:30 | ngedit isi tabel vendor dan bikin view | kebanyakan baris dan salah value, jadi bikin ulang isi dari tabel vendor |
 
 
