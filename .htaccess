@@ -1,0 +1,6 @@
+RewriteEngine On
+# Do not rewrite if the requested file or folder actually exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Send all other requests to index.php
+RewriteRule ^ index.php [L]
