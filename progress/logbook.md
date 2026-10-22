@@ -10,5 +10,8 @@
 | 15 Oktober | 11:40 - 12:10 | membuat tabel view untuk setiap tabel data utama | jujur masih bingung ini kolom hukum dan status untuk vendor maskudnya apa |
 | 16 Oktober | 8:00 - 8:30 | bikin repo github dan rapihin folder proyek | baru belajar make github hehe |
 | 19 Oktober | 20:00 - 20:30 | ngedit isi tabel vendor dan bikin view | kebanyakan baris dan salah value, jadi bikin ulang isi dari tabel vendor |
+| 22 Oktober | 9:00 - 11:00 | setup development framework | agak indecisive dikit |
+| 22 Oktober | 11:30 - 14:00 | bikin struktur awal website | jujur blum ada gambaran, cmn masukkin yang sekiranya butuh |
+| 22 Oktober | 15:00 - 16:30 | lanjutin struktur | LUPA CARA BIKIN NAVIGASI WEBSITE |
 
 
