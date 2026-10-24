@@ -13,5 +13,6 @@
 | 22 Oktober | 9:00 - 11:00 | setup development framework | agak indecisive dikit |
 | 22 Oktober | 11:30 - 14:00 | bikin struktur awal website | jujur blum ada gambaran, cmn masukkin yang sekiranya butuh |
 | 22 Oktober | 15:00 - 16:30 | lanjutin struktur | LUPA CARA BIKIN NAVIGASI WEBSITE |
+| 24 Oktober | 10:50 - 11:30 | bikin interfase user | per variable variable an ini membingungkan klo ga bisa liat langsung output yh |
 
 

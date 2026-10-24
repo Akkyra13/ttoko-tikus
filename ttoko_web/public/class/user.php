@@ -1,6 +1,6 @@
 <?php
 
-require_once("Database.php");
+require_once("database.php");
 
 class User
 {
@@ -9,7 +9,7 @@ class User
     // start database connection
     public function __construct()
     {
-        $this->db = Database::dbConnect();
+        $this->db = database::dbConnect();
     }
 
     //get all users data

@@ -1,3 +1,11 @@
+<?php
+
+require_once __DIR__ . '../../bootstrap.php';
+
+$userModel = new User();
+$users = $userModel->getUsers();
+
+?>
 <!-- user_table.php -->
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +37,8 @@
       <?php if (!empty($users)): ?>
         <?php foreach ($users as $user): ?>
           <tr>
-            <td><?= htmlspecialchars($user['username']) ?></td>
-            <td><?= htmlspecialchars($user['role']) ?></td>
+            <td><?= htmlspecialchars($user['Username']) ?></td>
+            <td><?= htmlspecialchars($user['Role']) ?></td>
           </tr>
         <?php endforeach; ?>
       <?php else: ?>
