@@ -14,5 +14,6 @@
 | 22 Oktober | 11:30 - 14:00 | bikin struktur awal website | jujur blum ada gambaran, cmn masukkin yang sekiranya butuh |
 | 22 Oktober | 15:00 - 16:30 | lanjutin struktur | LUPA CARA BIKIN NAVIGASI WEBSITE |
 | 24 Oktober | 10:50 - 11:30 | bikin interfase user | per variable variable an ini membingungkan klo ga bisa liat langsung output yh |
+| 26 Oktober | 13:40 - 16:30 | bikin struktur mvc | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa |
 
 
