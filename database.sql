@@ -360,7 +360,7 @@ set nama_vendor = "Rival Gear Nusantara", badan_hukum = 'C', status = 'A'
 where idvendor = 3;
 
 
--- bikin view
+-- bikin view tabel vendor
 create or replace view vendor_v as 
 select concat(
 (case
@@ -375,3 +375,113 @@ end as Status
 from vendor;
 
 
+-- =====================================
+--    function     /
+-- _______________/
+
+-- function aktifasi
+-- -------------------------------------
+-- fungsi untuk menampilkan aktif atau non aktif berdasarkan nilai typeint yang diberikan
+-- gunakan parameter ke 2, isi 's' untuk stok dan 'a' untuk aktif dan non aktif
+
+delimiter $$
+create function aktifasi(valuee int, tipe char(1))
+returns varchar(20)
+deterministic
+begin
+
+if tipe = 'a' then
+  if valuee = 0 then
+    return 'Non-Aktif';
+  elseif valuee = 1 then
+    return 'Aktif';
+  else
+    return 'INVALID VALUE';
+  end if;
+
+elseif tipe = 's' then
+  if valuee = 0 then
+    return 'Habis';
+  elseif valuee = 1 then
+    return 'Stok Tersedia';
+  else
+    return 'INVALID VALUE';
+  end if;
+
+else
+  return 'INVALID VALUE';
+end if;
+
+end $$
+delimiter ;
+
+-- tabel view 
+-- ---------------------------------
+-- tabel satuan
+create or replace view satuan_v as
+  select nama_satuan as Satuan,
+  aktifasi(status, s) as Status
+from satuan;
+
+-- tabel margin
+create or replace view margin_v as 
+  select concat(persen * 100, '%') as 'Margin',
+  aktifasi(status, s) as Status
+from margin_penjualan;
+
+-- tabel vendor
+create or replace view vendor_v as 
+select concat(
+(case
+  when badan_hukum = 'P' then 'PT.'
+  when badan_hukum = 'C' then 'CV.'
+end), 
+nama_vendor) as Vendor, 
+aktifasi(status, s) as Status
+from vendor;
+
+-- tabel barang
+create or replace view barang_v as
+select b.idbarang as 'ID_Item',
+case
+  when jenis = 'O' then 'Office'
+  when jenis = 'P' then 'Travel'
+  when jenis = 'G' then 'Gaming'
+  when jenis = 'E' then 'Ergonomic'
+end as 'Jenis',
+b.nama as 'Nama_Barang',
+sat.nama_satuan as 'Satuan',
+aktifasi(b.status, 's') as Stok,
+harga as 'Harga'
+from barang b 
+join satuan sat on b.idsatuan = sat.idsatuan;
+
+-- stored procedure
+-- nampilin barang yang stok nya tersedia
+
+delimiter $$
+create procedure barangTersedia()
+begin 
+
+select * from barang_v
+where Stok = "Stok Tersedia";
+
+end $$
+delimiter ;
+
+
+-- not related tp benerin view tabel barang
+create or replace view barang_v as
+select
+b.nama as 'Nama_Barang',
+case
+  when jenis = 'O' then 'Office'
+  when jenis = 'P' then 'Travel'
+  when jenis = 'G' then 'Gaming'
+  when jenis = 'E' then 'Ergonomic'
+end as 'Jenis',
+sat.nama_satuan as 'Satuan',
+aktifasi(b.status, 's') as Stok,
+harga as 'Harga'
+from barang b 
+join satuan sat on b.idsatuan = sat.idsatuan;

@@ -10,6 +10,9 @@ Minggu ke 9
 - [ ] view tables interfaces
 - [ ] login page
 - [ ] session checker on index.php
+- [x] function
+- [ ] stored procedure
+- [ ] trigger
 
 
 klo login make akun admin nanti masukknya ke dashboard admin. dari situ bisa pilih view mana yg mau di tampilin. klo parameter nya kosong ke dashboard aja

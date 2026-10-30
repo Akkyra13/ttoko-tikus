@@ -7,4 +7,4 @@
 <body>
     <h1>Registered Roles</h1>
     <p>insert roles table here</p>
-</x-layour>
+</x-layout>

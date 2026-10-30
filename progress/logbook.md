@@ -15,5 +15,7 @@
 | 22 Oktober | 15:00 - 16:30 | lanjutin struktur | LUPA CARA BIKIN NAVIGASI WEBSITE |
 | 24 Oktober | 10:50 - 11:30 | bikin interfase user | per variable variable an ini membingungkan klo ga bisa liat langsung output yh |
 | 26 Oktober | 13:40 - 16:30 | bikin struktur mvc | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa |
+| 29 Oktober | 7:40 - 10:00 | bikin function aktifasi() | tipe data status di vendor make char?? ku ganti tinyint biar seragam sama kolom 'status' di tabel lain |
+| 30 Oktober | 21:00 - 21:50| bikin stored procedure barangTersedia() dan benerin view tabel barang | kemaren update sistem terus rusak semua hyprland ku... ngungsi ge GNOME utk sementara |
 
 
