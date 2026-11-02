@@ -420,13 +420,13 @@ delimiter ;
 -- tabel satuan
 create or replace view satuan_v as
   select nama_satuan as Satuan,
-  aktifasi(status, s) as Status
+  aktifasi(status, 's') as Status
 from satuan;
 
 -- tabel margin
 create or replace view margin_v as 
   select concat(persen * 100, '%') as 'Margin',
-  aktifasi(status, s) as Status
+  aktifasi(status, 's') as Status
 from margin_penjualan;
 
 -- tabel vendor
@@ -437,7 +437,7 @@ select concat(
   when badan_hukum = 'C' then 'CV.'
 end), 
 nama_vendor) as Vendor, 
-aktifasi(status, s) as Status
+aktifasi(status, 's') as Status
 from vendor;
 
 -- tabel barang
@@ -453,10 +453,15 @@ b.nama as 'Nama_Barang',
 sat.nama_satuan as 'Satuan',
 aktifasi(b.status, 's') as Stok,
 harga as 'Harga'
-from barang b 
+from barang b
 join satuan sat on b.idsatuan = sat.idsatuan;
 
--- stored procedure
+-- =================================
+--    stored procedure  /
+-- ____________________/
+--
+-- barangTersedia
+-- -----------------------------
 -- nampilin barang yang stok nya tersedia
 
 delimiter $$
@@ -485,3 +490,43 @@ aktifasi(b.status, 's') as Stok,
 harga as 'Harga'
 from barang b 
 join satuan sat on b.idsatuan = sat.idsatuan;
+
+-- =============================
+--   triggers  /
+-- ___________/
+--
+-- nambahin kolom user_count
+alter table role
+add user_count int;
+
+-- RoleCountUp
+-- -------------------------
+-- nambahin user count di tabel role
+delimiter $$
+create trigger RoleCountUp
+after insert on user
+for each row
+begin
+
+update role
+set user_count = user_count + 1
+where idrole = new.idrole;
+
+end $$
+delimiter ;
+
+-- RoleCountDown
+-- --------------------------
+-- ngurangin user count di tabel role
+delimiter $$
+create trigger RoleCountDown
+after delete on user
+for each row
+begin
+
+update role
+set user_count = user_count - 1
+where idrole = old.idrole;
+
+end $$
+delimiter ;

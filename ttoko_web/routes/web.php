@@ -8,7 +8,6 @@ Route::get('/', function () {
     return view('welcomee');
 });
 
-use App\Http\Controllers\TablesController;
 
 // pake query url
 Route::get('/dashboard', function() {
@@ -18,6 +17,7 @@ Route::get('/dashboard', function() {
 // pake route parameter
 // Route::get('/dashboard/{tab?}', [DashboardController::class, 'index'])->name('dashboard');
 
+use App\Http\Controllers\TablesController;
 //route to tables
 Route::get('/tables', [TablesController::class, 'index'])->name('tables');
 

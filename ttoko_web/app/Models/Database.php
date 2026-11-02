@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Models;
+
+use PDO;
+use PDOException;
+
 class Database
 {
     private static $host = '127.0.0.1';

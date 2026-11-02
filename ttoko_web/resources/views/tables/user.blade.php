@@ -1,13 +1,5 @@
-<?php
-
-// require_once __DIR__ . '../../../bootstrap.php'
-
-$userModel = new User();
-$users = $userModel->getUsers();
-
-?>
-
 <!-- user_table.php -->
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <x-layout>
@@ -53,4 +45,23 @@ $users = $userModel->getUsers();
 
 </body>
 </html>
+</x-layout>
+
+-->
+
+<!DOCTYPE html>
+<html>
+<x-layout>
+<head>
+    <title>Users Table</title>
+</head>
+<body>
+<h1>User List</h1>
+<ul>
+    @foreach($data as $user)
+        <li>{{ $user[ 'Username' ] }}</li>
+    @endforeach
+</ul>
+    <h2>Registered Roles</h2>
+    <p>insert roles table here</p>
 </x-layout>
