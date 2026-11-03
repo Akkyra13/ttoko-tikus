@@ -311,13 +311,11 @@ case
 end as 'Jenis',
 b.nama as 'Nama_Barang',
 sat.nama_satuan as 'Satuan',
-case 
-  when b.status = 0 then 'Stok Tersedia'
-  when b.status = 1 then 'Stok Habis'
-end as Stok,
-harga as 'Harga'
-from barang b 
-join satuan sat on b.idsatuan = sat.idsatuan
+aktifasi(b.status, 's') as Stok,
+priceFormat(harga) as 'Harga'
+from barang b
+join satuan sat on b.idsatuan = sat.idsatuan;
+
 
 
 -- view tabel role
@@ -426,8 +424,11 @@ from satuan;
 -- tabel margin
 create or replace view margin_v as 
   select concat(persen * 100, '%') as 'Margin',
-  aktifasi(status, 's') as Status
-from margin_penjualan;
+  coalesce(updated_at, '-') as 'Updated_at',
+  u.username as 'Created_by',
+  aktifasi(status, 'a') as Status
+from margin_penjualan m
+join user u on m.iduser = u.iduser;
 
 -- tabel vendor
 create or replace view vendor_v as 
@@ -455,6 +456,47 @@ aktifasi(b.status, 's') as Stok,
 harga as 'Harga'
 from barang b
 join satuan sat on b.idsatuan = sat.idsatuan;
+
+-- function priceFormat
+-- -------------------------------
+-- function untuk merubah integer menjadi format uang
+
+delimiter $$
+create function priceFormat(harga int)
+returns varchar (50)
+deterministic
+begin
+declare result varchar(50);
+declare moenh varchar(50);
+declare len int;
+declare c int default 0;
+declare c2 int;
+declare i int default 1;
+
+set len = length(harga);
+set c = floor(len / 3); -- 2
+set c2 = len % 3; -- 0
+
+if c2 = 0 then
+  set c2 = 3;
+end if;
+
+if floor(c) != 0 and c2 = 3 then
+  set c = c - 1;
+end if;
+
+set moenh = 'Rp.';
+set result = concat(moenh, substring(harga, 1, c2));
+
+while i <= c do
+  set result = concat(result, ',', substring(harga, length(result) - (1 + i), 3));
+  set i = i + 1;
+end while;
+
+return result;
+
+end $$
+delimiter ;
 
 -- =================================
 --    stored procedure  /
@@ -487,7 +529,7 @@ case
 end as 'Jenis',
 sat.nama_satuan as 'Satuan',
 aktifasi(b.status, 's') as Stok,
-harga as 'Harga'
+formatPrice(harga) as 'Harga'
 from barang b 
 join satuan sat on b.idsatuan = sat.idsatuan;
 
@@ -530,3 +572,17 @@ where idrole = old.idrole;
 
 end $$
 delimiter ;
+
+
+-- ==========================
+--   Interface  /
+-- ____________/
+--
+-- tabel view role
+create or replace view role_v as
+select idrole as ID_Role,
+nama_role as Role,
+user_count as Users
+from role;
+
+

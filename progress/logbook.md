@@ -19,5 +19,8 @@
 | 30 Oktober | 21:00 - 21:50 | bikin stored procedure barangTersedia() dan benerin view tabel barang | kemaren update sistem terus rusak semua hyprland ku... ngungsi ge GNOME utk sementara |
 | 2 November | 13:30 - 14:00 | merubah tabel role dan bikin 2 trigger | alhamdulilah aman |
 | 2 November | 15:30 - 16:30 | masi benerin interface | MVC membingungkan |
+| 3 November | 6:30 - 8:15 | lengkapin front end; menyesuaikan beberapa tabel view | masi banyak yang harus di declare manual, bisa di optimasi lagi harusnya |
+| 3 November | 9:40 - 10:45 | bikin function priceFormat | forloop harus dalem function jd harus drop create setiap nyoba output. dan ga bisa create or replace juga...  |
+| 3 November | 12:00 - 12:30 | polishing function priceFormat | tiba-tiba ga lulus logpro |
 
 

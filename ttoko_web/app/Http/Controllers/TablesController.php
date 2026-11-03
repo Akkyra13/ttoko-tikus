@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
+use App\Models\Vendor;
+use App\Models\Barang;
+use App\Models\Margin;
+use App\Models\Unit;
 
 class TablesController extends Controller
 {
@@ -26,16 +31,52 @@ class TablesController extends Controller
 
         switch ($page) {
             case 'role':
-                $data = Role::all(); // Or your custom model method
-                $view = 'tables.roles';
+                $role = new Role;
+                $data = $role->getRoles();
+                $view = 'tables.role';
+                $page = 'roles';
+                break;
+
+            case 'vendor':
+                $role = new Vendor;
+                $data = $role->getVendors();
+                $view = 'tables.vendor';
+                $page = 'vendors';
+                break;
+
+            case 'barang':
+                $role = new Barang;
+                $data = $role->getItems();
+                $view = 'tables.barang';
+                $page = 'items';
+                break;
+
+            case 'margin':
+                $role = new Margin;
+                $data = $role->getMargins();
+                $view = 'tables.margin';
+                $page = 'margins';
+                break;
+
+            case 'unit':
+                $role = new Unit;
+                $data = $role->getUnits();
+                $view = 'tables.unit';
+                $page = 'units';
                 break;
 
             case 'user':
-            default:
                 $user = new User;
                 $data = $user->getUsers();
                 $view = 'tables.user';
-                $page = 'users'; // Ensure fallback sets the active page state
+                $page = 'users'; // ensure fallback sets the active page state
+                break;
+            case 'user':
+            default:
+                $view = '404';
+                // $user = new User;
+                 $data = '';
+                // $page = 'users'; // ensure fallback sets the active page state
                 break;
         }
 

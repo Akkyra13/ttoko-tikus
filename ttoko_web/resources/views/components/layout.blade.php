@@ -20,12 +20,28 @@
             Dashboard
         </a>
         <a href="{{ route('tables', ['page' => 'user']) }}"
-            class="nav-link {{ request()->query('page') === 'user' ? 'active' : '' }}">
+            class="nav-link {{ request()->query('page') === 'user' && request()->is('tables') ? 'active' : '' }}">
             User
         </a>
         <a href="{{ route('tables', ['page' => 'role']) }}"
-            class="nav-link {{ request()->query('page') === 'role' ? 'active' : '' }}">
+            class="nav-link {{ request()->query('page') === 'role' && request()->is('tables') ? 'active' : '' }}">
             Roles
+        </a>
+        <a href="{{ route('tables', ['page' => 'vendor']) }}"
+            class="nav-link {{ request()->query('page') === 'vendor' && request()->is('tables') ? 'active' : '' }}">
+            Vendors
+        </a>
+        <a href="{{ route('tables', ['page' => 'barang']) }}"
+            class="nav-link {{ request()->query('page') === 'barang' && request()->is('tables') ? 'active' : '' }}">
+            Inventory
+        </a>
+        <a href="{{ route('tables', ['page' => 'margin']) }}"
+            class="nav-link {{ request()->query('page') === 'margin' && request()->is('tables') ? 'active' : '' }}">
+            Margins
+        </a>
+        <a href="{{ route('tables', ['page' => 'unit']) }}"
+            class="nav-link {{ request()->query('page') === 'unit' && request()->is('tables') ? 'active' : '' }}">
+            Unit
         </a>
     </nav>
 

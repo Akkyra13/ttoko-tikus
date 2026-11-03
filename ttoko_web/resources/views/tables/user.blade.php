@@ -1,5 +1,4 @@
 <!-- user_table.php -->
-<!--
 <!DOCTYPE html>
 <html lang="en">
 <x-layout>
@@ -18,7 +17,7 @@
 </head>
 <body>
 
-  <h2>Users Directory</h2>
+  <h2>Registered Users</h2>
 
   <table>
     <thead>
@@ -28,8 +27,8 @@
       </tr>
     </thead>
     <tbody>
-      <?php if (!empty($users)): ?>
-        <?php foreach ($users as $user): ?>
+      <?php if (!empty($data)): ?>
+        <?php foreach ($data as $user): ?>
           <tr>
             <td><?= htmlspecialchars($user['Username']) ?></td>
             <td><?= htmlspecialchars($user['Role']) ?></td>
@@ -47,21 +46,3 @@
 </html>
 </x-layout>
 
--->
-
-<!DOCTYPE html>
-<html>
-<x-layout>
-<head>
-    <title>Users Table</title>
-</head>
-<body>
-<h1>User List</h1>
-<ul>
-    @foreach($data as $user)
-        <li>{{ $user[ 'Username' ] }}</li>
-    @endforeach
-</ul>
-    <h2>Registered Roles</h2>
-    <p>insert roles table here</p>
-</x-layout>
