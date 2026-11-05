@@ -4,13 +4,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcomee');
-});
+// Route::get('/', function () {
+//     return view('welcomee');
+// });
 
 
 // pake query url
-Route::get('/dashboard', function() {
+Route::get('/', function() {
     return view('dashboard');
 })->name('dashboard');
 

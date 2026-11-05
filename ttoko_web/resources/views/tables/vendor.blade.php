@@ -17,7 +17,19 @@
 </head>
 <body>
 
-  <h2>Registered Vendors</h2>
+<h2>Registered Vendors</h2>
+
+    <a href="{{ route('tables', ['page' => 'vendor']) }}"
+        class="nav-link {{ request()->query('page') === 'vendor' && request()->is('tables') ? 'active' : '' }}">
+        Hapus filter
+    </a>
+    <br>
+    <a> Filter : </a>
+    <a href="{{ route('tables', ['page' => 'vendor-aktif']) }}"
+        class="nav-link {{ request()->query('page') === 'vendor-aktif' && request()->is('tables') ? 'active' : '' }}">
+        Aktif
+    </a>
+
 
   <table>
     <thead>

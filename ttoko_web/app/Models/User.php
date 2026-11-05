@@ -19,4 +19,25 @@ class User
         $result = $this->db->query($query);
         return $result->fetchAll();
     }
+
+    public function getUsersCashier(): array
+    {
+        $query = "SELECT * FROM user_v where Role = 'kasir'";
+        $result = $this->db->query($query);
+        return $result->fetchAll();
+    }
+
+    public function getUsersInventory(): array
+    {
+        $query = "SELECT * FROM user_v where Role = 'inventaris'";
+        $result = $this->db->query($query);
+        return $result->fetchAll();
+    }
+
+    public function getUsersManager(): array
+    {
+        $query = "SELECT * FROM user_v where Role = 'manajer'";
+        $result = $this->db->query($query);
+        return $result->fetchAll();
+    }
 }

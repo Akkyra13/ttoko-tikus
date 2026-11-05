@@ -19,6 +19,27 @@
 
   <h2>Registered Users</h2>
 
+    <a href="{{ route('tables', ['page' => 'user']) }}"
+        class="nav-link {{ request()->query('page') === 'user' && request()->is('tables') ? 'active' : '' }}">
+        Hapus filter
+    </a>
+    <br>
+    <a> Filter : User Roles</a>
+    <br>
+    <a href="{{ route('tables', ['page' => 'user-kasir']) }}"
+        class="nav-link {{ request()->query('page') === 'user-kasir' && request()->is('tables') ? 'active' : '' }}">
+        Kasir
+    </a>
+    <a href="{{ route('tables', ['page' => 'user-inventaris']) }}"
+        class="nav-link {{ request()->query('page') === 'user-inventaris' && request()->is('tables') ? 'active' : '' }}">
+        Inventaris
+    </a>
+    <a href="{{ route('tables', ['page' => 'user-manajer']) }}"
+        class="nav-link {{ request()->query('page') === 'user-manajer' && request()->is('tables') ? 'active' : '' }}">
+        Manajer
+    </a>
+
+
   <table>
     <thead>
       <tr>

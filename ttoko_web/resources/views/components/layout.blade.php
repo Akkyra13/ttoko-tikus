@@ -20,7 +20,7 @@
             Dashboard
         </a>
         <a href="{{ route('tables', ['page' => 'user']) }}"
-            class="nav-link {{ request()->query('page') === 'user' && request()->is('tables') ? 'active' : '' }}">
+            class="nav-link {{ ( request()->query('page') === 'user' || request()->query('page') === 'user-kasir' || request()->query('page') === 'user-inventaris' || request()->query('page') === 'user-manajer' ) && request()->is('tables') ? 'active' : '' }}">
             User
         </a>
         <a href="{{ route('tables', ['page' => 'role']) }}"
@@ -28,11 +28,11 @@
             Roles
         </a>
         <a href="{{ route('tables', ['page' => 'vendor']) }}"
-            class="nav-link {{ request()->query('page') === 'vendor' && request()->is('tables') ? 'active' : '' }}">
+            class="nav-link {{ ( request()->query('page') === 'vendor' || request()->query('page') === 'vendor-aktif' ) && request()->is('tables') ? 'active' : '' }}">
             Vendors
         </a>
         <a href="{{ route('tables', ['page' => 'barang']) }}"
-            class="nav-link {{ request()->query('page') === 'barang' && request()->is('tables') ? 'active' : '' }}">
+            class="nav-link {{ (request()->query('page') === 'barang' || request()->query('page') === 'barang-tersedia')  && request()->is('tables') ? 'active' : '' }}">
             Inventory
         </a>
         <a href="{{ route('tables', ['page' => 'margin']) }}"

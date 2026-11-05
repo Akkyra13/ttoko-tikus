@@ -22,5 +22,6 @@
 | 3 November | 6:30 - 8:15 | lengkapin front end; menyesuaikan beberapa tabel view | masi banyak yang harus di declare manual, bisa di optimasi lagi harusnya |
 | 3 November | 9:40 - 10:45 | bikin function priceFormat | forloop harus dalem function jd harus drop create setiap nyoba output. dan ga bisa create or replace juga...  |
 | 3 November | 12:00 - 12:30 | polishing function priceFormat | tiba-tiba ga lulus logpro |
+| 4 November | 12:00 - 12:40 | bikin fitur filter utk beberapa tabel | collation nya beda, db sama laravel |
 
 

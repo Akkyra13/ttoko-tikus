@@ -18,6 +18,18 @@
 <body>
 
   <h2>Inventory Items</h2>
+  <body>
+    <a href="{{ route('tables', ['page' => 'barang']) }}"
+        class="nav-link {{ request()->query('page') === 'barang' && request()->is('tables') ? 'active' : '' }}">
+        Hapus filter
+    </a>
+    <br>
+    <a> Filter : </a>
+    <a href="{{ route('tables', ['page' => 'barang-tersedia']) }}"
+        class="nav-link {{ request()->query('page') === 'barang-tersedia' && request()->is('tables') ? 'active' : '' }}">
+        Stok Tersedia
+    </a>
+    </body>
 
   <table>
     <thead>

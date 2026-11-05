@@ -19,4 +19,11 @@ class Vendor
         $result = $this->db->query($query);
         return $result->fetchAll();
     }
+
+    public function getVendorsActive(): array
+    {
+        $query = "SELECT * FROM vendor_v WHERE Status = 'Aktif'";
+        $result = $this->db->query($query);
+        return $result->fetchAll();
+    }
 }

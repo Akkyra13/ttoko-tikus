@@ -44,9 +44,23 @@ class TablesController extends Controller
                 $page = 'vendors';
                 break;
 
+            case 'vendor-aktif':
+                $role = new Vendor;
+                $data = $role->getVendorsActive();
+                $view = 'tables.vendor';
+                $page = 'vendors';
+                break;
+
             case 'barang':
                 $role = new Barang;
                 $data = $role->getItems();
+                $view = 'tables.barang';
+                $page = 'items';
+                break;
+
+            case 'barang-tersedia':
+                $role = new Barang;
+                $data = $role->getItemsAvail();
                 $view = 'tables.barang';
                 $page = 'items';
                 break;
@@ -71,21 +85,36 @@ class TablesController extends Controller
                 $view = 'tables.user';
                 $page = 'users'; // ensure fallback sets the active page state
                 break;
-            case 'user':
+
+            case 'user-kasir':
+                $user = new User;
+                $data = $user->getUsersCashier();
+                $view = 'tables.user';
+                $page = 'users'; // ensure fallback sets the active page state
+                break;
+
+            case 'user-inventaris':
+                $user = new User;
+                $data = $user->getUsersInventory();
+                $view = 'tables.user';
+                $page = 'users'; // ensure fallback sets the active page state
+                break;
+
+            case 'user-manajer':
+                $user = new User;
+                $data = $user->getUsersManager();
+                $view = 'tables.user';
+                $page = 'users'; // ensure fallback sets the active page state
+                break;
+
             default:
                 $view = '404';
-                // $user = new User;
                  $data = '';
-                // $page = 'users'; // ensure fallback sets the active page state
                 break;
         }
 
-        //default
-        // $output = $views[$page] ?? 'dashboard';
-
-        // output
         return view($view, [
-            'data' => $data, //access passed to the view with $currentPage
+            'data' => $data, //data values passed to the view with $currentPage
             'currentPage' => $page, //access passed to the view with $currentPage
         ]);
     }

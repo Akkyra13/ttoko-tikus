@@ -22,7 +22,7 @@ class Barang
 
     public function getItemsAvail(): array
     {
-        $query = "call barangTersedia()";
+        $query = "SELECT * FROM barang_v where Stok = 'Stok Tersedia'";
         $result = $this->db->query($query);
         return $result->fetchAll();
     }
