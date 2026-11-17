@@ -9,6 +9,12 @@
         nav a { color: white; margin-right: 15px; text-decoration: none; }
         nav a.active { font-weight: bold; color: #4aa3df; }
         main { padding: 2rem; }
+        body { font-family: system-ui, -apple-system, sans-serif; margin: 2rem; background: #f8fafc; }
+        table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #334155; }
+        tr:hover { background-color: #f8fafc; }
+        .no-data { text-align: center; color: #64748b; font-style: italic; }
     </style>
 </head>
 <body>
@@ -31,8 +37,8 @@
             class="nav-link {{ ( request()->query('page') === 'vendor' || request()->query('page') === 'vendor-aktif' ) && request()->is('tables') ? 'active' : '' }}">
             Vendors
         </a>
-        <a href="{{ route('tables', ['page' => 'barang']) }}"
-            class="nav-link {{ (request()->query('page') === 'barang' || request()->query('page') === 'barang-tersedia')  && request()->is('tables') ? 'active' : '' }}">
+        <a href="{{ route('barang.index') }}"
+            class="nav-link {{ request()->is('barang*') ? 'active' : '' }}">
             Inventory
         </a>
         <a href="{{ route('tables', ['page' => 'margin']) }}"
@@ -47,7 +53,7 @@
 
     <!-- Page Content Slot -->
     <main>
-        {{ $slot }}
+        @yield('content')
     </main>
 
 </body>

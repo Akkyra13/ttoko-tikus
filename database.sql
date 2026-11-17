@@ -585,4 +585,10 @@ nama_role as Role,
 user_count as Users
 from role;
 
+-- filter aktif tabel vendor
+create or replace view vendor_v_act as
+select * from vendor_v where Status = 'Aktif';
 
+
+create or replace view barang_v_avail as
+select * from barang_v where Stok = 'Stok Tersedia';

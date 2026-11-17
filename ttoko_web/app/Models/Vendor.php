@@ -2,8 +2,16 @@
 
 namespace App\Models;
 
-class Vendor
+use Illuminate\Database\Eloquent\Model;
+
+class Vendor extends Model
 {
+    protected $table = 'vendor';
+    protected $primaryKey = 'idvendor';
+    protected $timestamp = false;
+    protected $fillable = [
+        'nama_vendor', 'badan_hukum'
+    ];
     private $db;
 
     // start database connection

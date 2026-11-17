@@ -21,6 +21,12 @@ use App\Http\Controllers\TablesController;
 //route to tables
 Route::get('/tables', [TablesController::class, 'index'])->name('tables');
 
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\UserController;
+
+
+Route::resource('barang', BarangController::class);
+Route::resource('user', UserController::class);
 
 // user table route
 // Route::get('/users', function() {

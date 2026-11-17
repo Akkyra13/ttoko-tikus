@@ -54,14 +54,14 @@ class TablesController extends Controller
             case 'barang':
                 $role = new Barang;
                 $data = $role->getItems();
-                $view = 'tables.barang';
+                $view = 'tables.barang.index';
                 $page = 'items';
                 break;
 
             case 'barang-tersedia':
                 $role = new Barang;
                 $data = $role->getItemsAvail();
-                $view = 'tables.barang';
+                $view = 'tables.barang.barang';
                 $page = 'items';
                 break;
 
@@ -114,8 +114,10 @@ class TablesController extends Controller
         }
 
         return view($view, [
-            'data' => $data, //data values passed to the view with $currentPage
-            'currentPage' => $page, //access passed to the view with $currentPage
+            'tableData' => $data, //data values passed to the view with $currentPage
+            'currentTable' => $page, //access passed to the view with $currentPage"SELECT * FROM user_v";
         ]);
+
+
     }
 }

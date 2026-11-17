@@ -1,5 +1,8 @@
 # Log Pengerjaan TToko Tikus
 
+Rombak count = 4
+
+
 | tanggal | jam | aktifitas | kendala |
 |:---:|:---:|:---|:---|
 | 30 September | 14:00 - 16:00 | DDL bikin tabel 1 sampe 10 | query buffer lupa di save |
@@ -23,5 +26,9 @@
 | 3 November | 9:40 - 10:45 | bikin function priceFormat | forloop harus dalem function jd harus drop create setiap nyoba output. dan ga bisa create or replace juga...  |
 | 3 November | 12:00 - 12:30 | polishing function priceFormat | tiba-tiba ga lulus logpro |
 | 4 November | 12:00 - 12:40 | bikin fitur filter utk beberapa tabel | collation nya beda, db sama laravel |
+| 8 November | 7:20 - 10:00 | rapihin halaman tabel | rombak semuah biar bs make resource model. sial |
+| 13 November | 7:00 - 9:00 | nambah trigger klo ada yg ganti role juga ngitung role_count; websitenya rombak lagi...; | rombak semuah lagi... ternyata beberapa kepake eloquent ga sengaja |
+| 14 November | 5:45 - 8:23 | lanjut proses rombak | rombak *LAGIH* krn ga sengaja beberapa make query builder |
+| 17 November | 9:55 - 16:00 | interface barang dengan edit, tambah, dan filter(belum store sm update);  | jujur cape ngerombak lagi, ku kerjain dari awal aja |
 
 

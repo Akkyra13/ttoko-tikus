@@ -1,1 +1,6 @@
 /vendor/
+/.remember/
+backup.sql
+c8bc971-comments.md
+backup2.sql
+db-objects.md
