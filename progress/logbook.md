@@ -30,5 +30,8 @@ Rombak count = 4
 | 13 November | 7:00 - 9:00 | nambah trigger klo ada yg ganti role juga ngitung role_count; websitenya rombak lagi...; | rombak semuah lagi... ternyata beberapa kepake eloquent ga sengaja |
 | 14 November | 5:45 - 8:23 | lanjut proses rombak | rombak *LAGIH* krn ga sengaja beberapa make query builder |
 | 17 November | 9:55 - 16:00 | interface barang dengan edit, tambah, dan filter(belum store sm update);  | jujur cape ngerombak lagi, ku kerjain dari awal aja |
+| 18 November | 12:00 - 14:37 | nambahin default di kolom status tabel barang; bikin update untuk interface barang; migrasi dengan laravel DB | ganti, ga mau make connection PDO |
+| 18 November | 19:30 - 19:50 | bikin create untuk tabel barang | mana object? mana array? mana const? aaaaaaa |
+| 18 November | 20:00 - 21:10 | selesain bikin create dan store untuk tabel barang | belajar html |
 
 

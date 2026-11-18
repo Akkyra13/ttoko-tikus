@@ -22,7 +22,7 @@
     </a>
 
     <br>
-    <a> Filter : </a>
+    <span> Filter : </span>
     <a href="{{ route('barang.index') }}"
         class="nav-link {{ request()->query('page') === 'barang' && request()->is('tables') ? 'active' : '' }}">
         Semua
@@ -50,13 +50,19 @@
     <tbody>
     @foreach($data as $d)
         <tr>
-            <td> {{ $d['ID_Item'] }} </td>
-            <td> {{ $d['Jenis'] }} </td>
-            <td> {{ $d['Nama_Barang'] }} </td>
-            <td> {{ $d['Satuan'] }} </td>
-            <td> {{ $d['Stok'] }} </td>
-            <td> {{ $d['Harga'] }} </td>
-            <td> <a href="{{ route('barang.edit', $d['ID_Item']) }}"> Edit </a>
+            <td> {{ $d->idbarang }} </td>
+            <td> {{ $d->Jenis }} </td>
+            <td> {{ $d->Nama_Barang }} </td>
+            <td> {{ $d->Satuan }} </td>
+            <td> {{ $d->Stok }} </td>
+            <td> {{ $d->Harga }} </td>
+            <td> <a href="{{ route('barang.edit', $d->idbarang) }}"> Edit </a>
+                <form class="inline" action="{{ route('barang.destroy', $d->idbarang) }}" method="POST" onsubmit="return confirm('Hapus {{ $d->Nama_Barang }}?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" > Hapus </button>
+                </form>
+            </td>
         </tr>
     @endforeach
     </tbody>

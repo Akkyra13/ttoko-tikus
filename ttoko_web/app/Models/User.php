@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+
 class User
 {
     private $db;
@@ -15,29 +17,25 @@ class User
     //get all users data
     public function getUsers(): array
     {
-        $query = "SELECT * FROM user_v";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        $result = DB::select("SELECT * FROM user_v");
+        return $result;
     }
 
     public function getUsersCashier(): array
     {
-        $query = "SELECT * FROM user_v where Role = 'kasir'";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        $result = DB::select("SELECT * FROM user_v where Role = 'kasir'");
+        return $result;
     }
 
     public function getUsersInventory(): array
     {
-        $query = "SELECT * FROM user_v where Role = 'inventaris'";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        $result = DB::select("SELECT * FROM user_v where Role = 'inventaris'");
+        return $result;
     }
 
     public function getUsersManager(): array
     {
-        $query = "SELECT * FROM user_v where Role = 'manajer'";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        $result = DB::select("SELECT * FROM user_v where Role = 'manajer'");
+        return $result;
     }
 }

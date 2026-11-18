@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Support\Facades\DB;
 
 class Unit
 {
@@ -9,14 +10,15 @@ class Unit
     // start database connection
     public function __construct()
     {
-        $this->db = Database::dbConnect();
     }
 
     //get all users data
     public function getUnits(): array
     {
-        $query = "SELECT * FROM satuan_v";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        $result = DB::select(
+            "select * from satuan_v"
+        );
+        return $result;
     }
+
 }
