@@ -34,6 +34,12 @@
         /* Links inside page content look like buttons (navbar is outside <main>, so it's not affected) */
         main a { display: inline-block; margin: 0.25rem 0.25rem 0.25rem 0; padding: 0.4rem 0.9rem; border: 1px solid #4aa3df; border-radius: 6px; background: #fff; color: #2f8bc9; font-size: 0.9rem; font-weight: 600; text-decoration: none; }
         main a:hover { background: #4aa3df; color: #fff; }
+
+        /* Validation error card (components/errors.blade.php) */
+        .error-card { max-width: 480px; box-sizing: border-box; margin-top: 1rem; padding: 1rem 1.25rem; background: #fef2f2; border: 1px solid #fecaca; border-left: 4px solid #e5484d; border-radius: 8px; color: #991b1b; }
+        .error-card strong { display: block; margin-bottom: 0.4rem; }
+        .error-card ul { margin: 0; padding-left: 1.2rem; }
+        .error-card li { margin: 0.2rem 0; font-size: 0.9rem; }
     </style>
 </head>
 <body>

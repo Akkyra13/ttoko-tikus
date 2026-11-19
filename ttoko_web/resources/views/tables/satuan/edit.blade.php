@@ -5,6 +5,9 @@
 
 <a href="{{ route('satuan.index') }}"> Back </a>
 <br>
+@foreach ($errors->all() as $e)
+<p> {{ $e }} </p>
+@endforeach
 
 <form method="POST" action="{{ route('satuan.update', $data->ID_Satuan) }}">
 @csrf

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+
 class Role
 {
     private $db;
@@ -9,14 +11,14 @@ class Role
     // start database connection
     public function __construct()
     {
-        $this->db = Database::dbConnect();
     }
 
     //get all users data
     public function getRoles(): array
     {
-        $query = "SELECT * FROM role_v";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        $result = DB::select(
+            "select * from role_v"
+        );
+        return $result;
     }
 }
