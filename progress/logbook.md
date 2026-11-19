@@ -34,6 +34,7 @@ Rombak count = 4
 | 18 November | 19:30 - 19:50 | bikin create untuk tabel barang | mana object? mana array? mana const? aaaaaaa |
 | 18 November | 20:00 - 21:10 | selesain bikin create dan store untuk tabel barang | belajar html |
 | 19 November | 8:00 - 9:30 | bikin crud utk tabel satuan | niatnya tabel user tp salah buka file gpp lha |
-| 19 November | 11:40 - 14:00 | bikin crud utk tabel user | jujurly ini penamaan variabel butuh yang bisa di liat secara langsung |
+| 19 November | 11:40 - 14:00 | bikin crud utk tabel user | jujurly ini penamaan variabel butuh yang bisa di liat secara langsung; validasi password ribet amat alamak |
+| 19 November | 16:00 - 17:30 | bikin crud utk sisa tabel data master | pegel banyak ngaruh performa men.. |
 
 

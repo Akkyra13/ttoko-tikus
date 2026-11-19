@@ -24,11 +24,17 @@ Route::get('/tables', [TablesController::class, 'index'])->name('tables');
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\MarginController;
 
 
 Route::resource('barang', BarangController::class);
 Route::resource('satuan', SatuanController::class);
 Route::resource('user', UserController::class);
+Route::resource('role', RoleController::class);
+Route::resource('vendor', VendorController::class);
+Route::resource('margin', MarginController::class);
 
 // user table route
 // Route::get('/users', function() {

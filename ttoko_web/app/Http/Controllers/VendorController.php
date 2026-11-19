@@ -3,79 +3,85 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Barang;
-use App\Models\BarangView;
-use App\Models\BarangViewAvail;
+use Illuminate\Database\QueryException;
+use App\Models\Vendor;
 
-class BarangController extends Controller
+class VendorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    private function validated(Request $req): array
+    {
+        return $req->validate([
+            'nama'        => 'required|max:100',
+            'badan_hukum' => 'required|in:' . implode(',', array_keys(Vendor::BADAN_HUKUM)),
+            'status'      => 'required|in:' . implode(',', array_keys(Vendor::AKTIF)),
+        ]);
+    }
+
     public function index(Request $req)
     {
+        $model = new Vendor;
         $page = $req->query('filter', null);
         if (empty($page)) {
-            $data = BarangView::get();
+            $data = $model->getVendors();
         } else {
-            $data = BarangViewAvail::get();
+            $data = $model->getVendorsAct();
         }
-        $column = array_keys($data->first()->getAttributes());
-        return view('tables.barang.index', compact('data', 'column'));
+        return view('tables.vendor.index', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('barang.create');
+        $badan = Vendor::BADAN_HUKUM;
+        $status = Vendor::AKTIF;
+        return view('tables.vendor.create', compact(['badan', 'status']));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-        Barang::create($request->validated());
-        return redirect()->route('barang.index')
-            ->with('success', 'Barang ditambahkan');
+        $data = $this->validated($request);
+        (new Vendor)->addVendor($data);
+
+        return redirect()->route('vendor.index')
+            ->with('success', 'Vendor Added');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        return view('barang.show', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        return view('barang.edit', compact('data'));
+        $data = (new Vendor)->getWhere((int) $id);
+        if ($data === null) {
+            abort(404);
+        }
+        $badan = Vendor::BADAN_HUKUM;
+        $status = Vendor::AKTIF;
+        return view('tables.vendor.edit', compact(['data', 'badan', 'status']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        $data->update($request->validated());
-        return redirect()->route('barang.index')
-            ->with('success', 'Barang terupdate');
+        $data = $this->validated($request);
+        (new Vendor)->updateVendor($data, (int) $id);
+
+        return redirect()->route('vendor.index')
+            ->with('success', 'Vendor Updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $idt)
+    public function destroy(string $id)
     {
-        $data->delete();
-        return redirect()->route('barang.index')
-            ->with('success', 'Barang dihapus');
+        try {
+            (new Vendor)->deleteVendor((int) $id);
+        } catch (QueryException $e) {
+            if ($e->getCode() === '23000') {
+                return redirect()->route('vendor.index')
+                    ->withErrors(['vendor' => 'Vendor masih dipakai di pengadaan. Ubah status ke Non-Aktif saja.']);
+            }
+            throw $e;
+        }
+
+        return redirect()->route('vendor.index')
+            ->with('success', 'Vendor Removed');
     }
 }

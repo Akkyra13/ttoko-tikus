@@ -2,36 +2,74 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-class Vendor extends Model
+class Vendor
 {
-    protected $table = 'vendor';
-    protected $primaryKey = 'idvendor';
-    protected $timestamp = false;
-    protected $fillable = [
-        'nama_vendor', 'badan_hukum'
+    public const BADAN_HUKUM = [
+        'P' => 'PT',
+        'C' => 'CV',
     ];
-    private $db;
 
-    // start database connection
-    public function __construct()
-    {
-        $this->db = Database::dbConnect();
-    }
+    public const AKTIF = [
+        1 => 'Aktif',
+        0 => 'Non-Aktif',
+    ];
 
-    //get all users data
     public function getVendors(): array
     {
-        $query = "SELECT * FROM vendor_v";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        return DB::select("select * from vendor_v");
     }
 
-    public function getVendorsActive(): array
+    public function getVendorsAct(): array
     {
-        $query = "SELECT * FROM vendor_v WHERE Status = 'Aktif'";
-        $result = $this->db->query($query);
-        return $result->fetchAll();
+        return DB::select("select * from vendor_v_act");
+    }
+
+    public function getWhere(int $id): ?object
+    {
+        return DB::selectOne(
+            "select v.*, r.nama_vendor, r.badan_hukum, r.status as status_id
+            from vendor_v v
+            join vendor r on v.ID_Vendor = r.idvendor
+            where v.ID_Vendor = :id",
+            ['id' => $id]
+        );
+    }
+
+    public function addVendor(array $d): bool
+    {
+        return DB::insert(
+            "insert into vendor (nama_vendor, badan_hukum, status)
+            values (:nama, :badan, :status)",
+            [
+                'nama'   => $d['nama'],
+                'badan'  => $d['badan_hukum'],
+                'status' => $d['status'],
+            ]
+        );
+    }
+
+    public function updateVendor(array $d, int $id): int
+    {
+        return DB::update(
+            "update vendor
+            set nama_vendor = :nama, badan_hukum = :badan, status = :status
+            where idvendor = :id",
+            [
+                'nama'   => $d['nama'],
+                'badan'  => $d['badan_hukum'],
+                'status' => $d['status'],
+                'id'     => $id,
+            ]
+        );
+    }
+
+    public function deleteVendor(int $id): int
+    {
+        return DB::delete(
+            "delete from vendor where idvendor = :id",
+            ['id' => $id]
+        );
     }
 }

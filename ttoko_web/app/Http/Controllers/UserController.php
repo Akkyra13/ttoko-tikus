@@ -14,7 +14,6 @@ class UserController extends Controller
 
     private function validated(Request $req, bool $isCreate = false): array
     {
-        // create form: password + password_confirmation
         if ($isCreate) {
             return $req->validate([
                 'username' => 'required|max:45',
@@ -23,8 +22,6 @@ class UserController extends Controller
             ]);
         }
 
-        // edit form: optional newpassword + newpassword_confirmation
-        // (current password is checked separately in update())
         return $req->validate([
             'username'    => 'required|max:45',
             'newpassword' => 'nullable|required_with:newpassword_confirmation|min:8|confirmed',
