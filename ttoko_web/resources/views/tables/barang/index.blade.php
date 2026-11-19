@@ -24,11 +24,11 @@
     <br>
     <span> Filter : </span>
     <a href="{{ route('barang.index') }}"
-        class="nav-link {{ request()->query('page') === 'barang' && request()->is('tables') ? 'active' : '' }}">
+        class="nav-link {{ request()->query('filter') === 'barang' && request()->is('barang') ? 'active' : '' }}">
         Semua
     </a>
     <a href="{{ route('barang.index', ['filter' => 'tersedia']) }}"
-        class="nav-link {{ request()->query('filter') === 'tersedia' && request()->is('barang') ? 'active' : '' }}">
+        class="nav-link {{ request()->query('filter') === 'tersedia' && request()->is('*tersedia') ? 'active' : '' }}">
         Stok Tersedia
     </a>
     </body>

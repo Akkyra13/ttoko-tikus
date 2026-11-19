@@ -17,17 +17,18 @@
 <label> Jenis </label>
     <select name="jenis">
         @foreach($jenis as $d => $label)
-            <option value="{{ $d }}" @selected(old('jenis', $data->Jenis) === (string) $label)> {{ $label }} </option>
+            <option value="{{ $d }}"
+            @selected(old('jenis', $data->jenis_id) === (string) $d)>
+            {{ $label }}
+            </option>
         @endforeach
     </select>
 
 <label> Satuan </label>
     <select name="satuan">
         @foreach($satuan as $s)
-            <option value="{{ $s->ID_Satuan }}"
-                @selected(old('satuan') !== null
-                    ? (string) old('satuan') === (string) $s->ID_Satuan
-                    : ($data->Satuan ?? '') === $s->Satuan)>
+            <option value="{{ $data->satuan_id }}"
+                @selected(old('satuan', $data->satuan_id) === (int) $s->ID_Satuan)>
                 {{ $s->Satuan }}
             </option>
         @endforeach
@@ -36,7 +37,7 @@
 <label> Stok </label>
     <select name="stok">
         @foreach($stok as $d => $label)
-            <option value="{{ $d }}" @selected(old('stok', $data->Stok) === (string) $label)> {{ $label }} </option>
+            <option value="{{ $d }}" @selected(old('stok', $data->status_id) === (string) $d)> {{ $label }} </option>
         @endforeach
     </select>
 

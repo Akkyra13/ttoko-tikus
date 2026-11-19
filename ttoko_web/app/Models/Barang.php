@@ -15,7 +15,7 @@ class Barang
 
     public const STOK = [
           1 => 'Stok Tersedia',
-          0 => 'Stok Habis',
+          0 => 'Habis',
     ];
 
     public function __construct()
@@ -42,7 +42,7 @@ class Barang
     public function getWhere(int $d): ?object
     {
         $result = DB::selectOne(
-            "SELECT v.*, r.harga as harga_int FROM barang_v v
+            "SELECT v.*, r.harga as harga_int, r.jenis as jenis_id, r.idsatuan as satuan_id, r.status as status_id FROM barang_v v
             join barang r on v.idbarang = r.idbarang
             WHERE v.idbarang = :id",
             ['id' => $d]
@@ -52,7 +52,7 @@ class Barang
 
     public function updateItem(array $d, int $id) //ga perlu output
     {
-        $result = DB::insert(
+        $result = DB::update(
             "UPDATE barang SET jenis = :jenis, nama = :nama, idsatuan = :idsatuan, harga = :harga
             WHERE idbarang = :idbarang",
             [

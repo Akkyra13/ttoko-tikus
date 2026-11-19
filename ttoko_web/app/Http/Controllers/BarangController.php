@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
-use App\Models\Unit;
+use App\Models\Satuan;
 
 class BarangController extends Controller
 {
@@ -31,7 +31,7 @@ class BarangController extends Controller
     {
         $jenis = Barang::JENIS;
         $stok = Barang::STOK;
-        $satuan = (new Unit)->getUnits();
+        $satuan = (new Satuan)->getUnits();
         return view('tables.barang.create', compact(['jenis', 'stok', 'satuan']));
     }
 
@@ -62,7 +62,7 @@ class BarangController extends Controller
         $data = (new Barang)->getWhere($id);
         $jenis = Barang::JENIS;
         $stok = Barang::STOK;
-        $satuan = (new Unit)->getUnits();
+        $satuan = (new Satuan)->getUnits();
         return view('tables.barang.edit', compact(['data', 'jenis', 'stok', 'satuan']));
     }
 

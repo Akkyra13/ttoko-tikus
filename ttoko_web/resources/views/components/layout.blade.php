@@ -64,9 +64,9 @@
             class="nav-link {{ request()->query('page') === 'margin' && request()->is('tables') ? 'active' : '' }}">
             Margins
         </a>
-        <a href="{{ route('tables', ['page' => 'unit']) }}"
-            class="nav-link {{ request()->query('page') === 'unit' && request()->is('tables') ? 'active' : '' }}">
-            Unit
+        <a href="{{ route('satuan.index') }}"
+            class="nav-link {{ request()->is('satuan*') ? 'active' : '' }}">
+            Units
         </a>
     </nav>
 

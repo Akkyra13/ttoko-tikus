@@ -22,10 +22,12 @@ use App\Http\Controllers\TablesController;
 Route::get('/tables', [TablesController::class, 'index'])->name('tables');
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UserController;
 
 
 Route::resource('barang', BarangController::class);
+Route::resource('satuan', SatuanController::class);
 Route::resource('user', UserController::class);
 
 // user table route
