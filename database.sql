@@ -207,7 +207,7 @@ alter table user modify password_hash varchar(255) not null;
 insert into user(username, password_hash, idrole) values 
 ('mas_ceo', SHA2('xmasceox', 256), 1),
 ('mas_manajer', SHA2('adminkuyy', 256), 2),
-('kasir_1', SHA2('loginkasir1', 256), 3),
+('kasir_1', SHA2('kasir123', 256), 3),
 ('kasir_2', SHA2('loginkasir2', 256), 3),
 ('inven_1', SHA2('warehouse1', 256), 4);
 

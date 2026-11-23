@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Database Dashboard Website' }}</title>
     <style>
-        nav { background: #333; padding: 1rem; }
+        nav { background: #333; padding: 1rem; display: flex; align-items: center; flex-wrap: wrap; }
         nav a { color: white; margin-right: 15px; text-decoration: none; }
         nav a.active { font-weight: bold; color: #4aa3df; }
         main { padding: 2rem; }
@@ -31,6 +31,11 @@
 
         main a { display: inline-block; margin: 0.25rem 0.25rem 0.25rem 0; padding: 0.4rem 0.9rem; border: 1px solid #4aa3df; border-radius: 6px; background: #fff; color: #2f8bc9; font-size: 0.9rem; font-weight: 600; text-decoration: none; }
         main a:hover { background: #4aa3df; color: #fff; }
+
+        nav form.logout { margin: 0 0 0 auto; padding: 0; max-width: none; background: none; box-shadow: none; border-radius: 0; display: flex; align-items: center; gap: 0.75rem; }
+        nav form.logout span { color: #cbd5e1; font-size: 0.9rem; }
+        nav form.logout button { margin: 0; padding: 0.4rem 0.9rem; font-size: 0.9rem; background: #e5484d; }
+        nav form.logout button:hover { background: #c9353a; }
 
         .error-card { max-width: 480px; box-sizing: border-box; margin-top: 1rem; padding: 1rem 1.25rem; background: #fef2f2; border: 1px solid #fecaca; border-left: 4px solid #e5484d; border-radius: 8px; color: #991b1b; }
         .error-card strong { display: block; margin-bottom: 0.4rem; }
@@ -70,6 +75,14 @@
             class="nav-link {{ request()->is('satuan') ? 'active' : '' }}">
             Units
         </a>
+
+        <form class="logout" method="POST" action="{{ route('logout') }}">
+            @csrf
+            @if (session('username'))
+                <span>{{ session('username') }}</span>
+            @endif
+            <button type="submit">Logout</button>
+        </form>
     </nav>
 
     <!-- Page Content Slot -->

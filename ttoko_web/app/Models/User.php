@@ -56,6 +56,17 @@ class User
         return $result;
     }
 
+    public function getWhereUsername(string $id): ?object
+    {
+        $result = DB::selectOne(
+            "select *, r.idrole as role_id from user_v v
+            join user r on v.ID_User = r.iduser
+            where r.username = :id",
+            ['id' => $id]
+        );
+        return $result;
+    }
+
     public function updateUser(array $d, int $id)
     {
         $query =
@@ -95,6 +106,22 @@ class User
     {
         $pass = DB::selectOne(
         "select password_hash from user where iduser = :id",
+            [
+                'id' => $id
+            ]
+        );
+
+        if ($pass === null) {
+            return false;
+        }
+
+        return hash_equals($pass->password_hash, hash('sha256', $string));
+    }
+
+    public function checkPasswordUsername(string $id, string $string): bool
+    {
+        $pass = DB::selectOne(
+        "select password_hash from user where username = :id",
             [
                 'id' => $id
             ]
