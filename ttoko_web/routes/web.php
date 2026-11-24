@@ -26,51 +26,57 @@ Auth::routes();
 // pake route parameter
 // Route::get('/dashboard/{tab?}', [DashboardController::class, 'index'])->name('dashboard');
 
-use App\Http\Controllers\TablesController;
+// use App\Http\Controllers\TablesController;
 //route to tables
-Route::get('/tables', [TablesController::class, 'index'])->name('tables');
+// Route::get('/tables', [TablesController::class, 'index'])->name('tables');
 
-use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\MarginController;
-
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PengadaanController;
+use App\Http\Controllers\DetilPengadaanController;
+use App\Http\Controllers\PenerimaanController;
 
 Route::middleware(['login', 'role:1,2,3,4']) //bisa di akses semua akun
     ->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('barang', BarangController::class);
     });
 
-Route::middleware(['login', 'role:1,2']) //admin
-    ->group(function () {
-        Route::resource('barang', BarangController::class);
-        Route::resource('satuan', SatuanController::class);
-        Route::resource('user', UserController::class);
-        Route::resource('role', RoleController::class);
-        Route::resource('vendor', VendorController::class);
-        Route::resource('margin', MarginController::class);
-    });
 
-Route::middleware(['login', 'role:4']) //inverntaris
+Route::middleware(['login', 'role:1,2,4']) //inverntaris
     ->group(function () {
         Route::resource('vendor', VendorController::class);
-        Route::resource('barang', BarangController::class);
         Route::resource('satuan', SatuanController::class);
+        Route::resource('penerimaan', PenerimaanController::class);
         //penerimaan
         //pengadaan
     });
 
 
-Route::middleware(['login', 'role:3']) //kasir
+Route::middleware(['login', 'role:1,2,3']) //kasir
     ->group(function () {
-        Route::resource('barang', BarangController::class);
         // penjualan
     });
 
 
+Route::middleware(['login', 'role:1,2']) //admin
+    ->group(function () {
+        Route::resource('role', RoleController::class);
+        Route::resource('margin', MarginController::class);
+        Route::resource('pengadaan', PengadaanController::class)->except(['edit', 'update']);
+        Route::resource('pengadaan.items', DetilPengadaanController::class)->only(['store', 'update', 'destroy']);
+        Route::post('pengadaan/{pengadaan}/kirim', [PengadaanController::class, 'kirim'])->name('pengadaan.kirim');
+    });
+
+Route::middleware(['login', 'role:1']) //owner
+    ->group(function () {
+        Route::resource('user', UserController::class);
+    });
 
 // user table route
 // Route::get('/users', function() {

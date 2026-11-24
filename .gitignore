@@ -6,4 +6,6 @@ backup2.sql
 db-objects.md
 db-routines.md
 backup3.sql
+backup3-readable.sql
 ttoko_web/app/Models/Database.php
+dropped-triggers-*.sql

@@ -47,42 +47,50 @@
 
     <!-- Persistent Navigation Bar -->
     <nav>
-        <a href="{{ route('dashboard') }}"
-            class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-            Dashboard
-        </a>
-        <a href="{{ route('user.index') }}"
-            class="nav-link {{ ( request()->is('user') ? 'active' : '') }}">
-            Users
-        </a>
-        <a href="{{ route('role.index') }}"
-            class="nav-link {{ ( request()->is('role') ? 'active' : '') }}">
-            Roles
-        </a>
-        <a href="{{ route('vendor.index') }}"
-            class="nav-link {{ ( request()->is('vendor') ? 'active' : '') }}">
-            Vendors
-        </a>
-        <a href="{{ route('barang.index') }}"
-            class="nav-link {{ request()->is('barang') ? 'active' : '' }}">
-            Inventory
-        </a>
-        <a href="{{ route('margin.index') }}"
-            class="nav-link {{ request()->is('margin') ? 'active' : '' }}">
-            Margins
-        </a>
-        <a href="{{ route('satuan.index') }}"
-            class="nav-link {{ request()->is('satuan') ? 'active' : '' }}">
-            Units
-        </a>
+            <a href="{{ route('dashboard') }}"
+                class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                Dashboard
+            </a>
+            <a href="{{ route('user.index') }}"
+                class="nav-link {{ ( request()->is('user') ? 'active' : '') }}">
+                Users
+            </a>
+            <a href="{{ route('role.index') }}"
+                class="nav-link {{ ( request()->is('role') ? 'active' : '') }}">
+                Roles
+            </a>
+            <a href="{{ route('vendor.index') }}"
+                class="nav-link {{ ( request()->is('vendor') ? 'active' : '') }}">
+                Vendors
+            </a>
+            <a href="{{ route('barang.index') }}"
+                class="nav-link {{ request()->is('barang') ? 'active' : '' }}">
+                Inventory
+            </a>
+            <a href="{{ route('margin.index') }}"
+                class="nav-link {{ request()->is('margin') ? 'active' : '' }}">
+                Margins
+            </a>
+            <a href="{{ route('satuan.index') }}"
+                class="nav-link {{ request()->is('satuan') ? 'active' : '' }}">
+                Units
+            </a>
+            <a href="{{ route('pengadaan.index') }}"
+                class="nav-link {{ request()->is('pengadaan') ? 'active' : '' }}">
+                Pengadaan
+            </a>
+            <a href="{{ route('penerimaan.index') }}"
+                class="nav-link {{ request()->is('penerimaan') ? 'active' : '' }}">
+                Penerimaan
+            </a>
 
-        <form class="logout" method="POST" action="{{ route('logout') }}">
-            @csrf
-            @if (session('username'))
-                <span>{{ session('username') }}</span>
-            @endif
-            <button type="submit">Logout</button>
-        </form>
+            <form class="logout" method="POST" action="{{ route('logout') }}">
+                @csrf
+                @if (session('username'))
+                    <span>{{ session('username') }}</span>
+                @endif
+                <button type="submit">Logout</button>
+            </form>
     </nav>
 
     <!-- Page Content Slot -->

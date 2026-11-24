@@ -46,7 +46,7 @@ class MarginController extends Controller
         (new Margin)->addMargin($data);
 
         return redirect()->route('margin.index')
-            ->with('success', 'Margin Added');
+            ->with('success', 'Margin berhasil ditambah');
     }
 
     public function show(string $id)
@@ -66,10 +66,12 @@ class MarginController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $this->validated($request);
-        (new Margin)->updateMargin($data, (int) $id);
-
-        return redirect()->route('margin.index')
-            ->with('success', 'Margin Updated');
+        if ((new Margin)->updateMargin($data, (int) $id)) {
+            return redirect()->route('margin.index')
+                ->with('success', 'Margin diperbarui');
+        }
+            return back()
+                ->withErrors(['status' => 'margin tidak dapat diperbarui']);
     }
 
     public function destroy(string $id)

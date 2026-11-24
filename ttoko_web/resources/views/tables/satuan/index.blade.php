@@ -53,7 +53,7 @@
             <td> {{ $d->Satuan }} </td>
             <td> {{ $d->Status }} </td>
             <td> <a href="{{ route('satuan.edit', $d->ID_Satuan) }}"> Edit </a>
-                <form class="inline" action="{{ route('satuan.destroy', $d->ID_Satuan) }}" method="POST" onsubmit="return confirm('Hapus {{ $d->Satuan }}?')">
+                <form class="inline" action="{{ route('satuan.destroy', $d->ID_Satuan) }}" method="POST" onsubmit="return confirm({{ Js::from('Hapus ' . $d->Satuan . '?') }})">
                     @csrf
                     @method('DELETE')
                     <button type="submit" > Hapus </button>

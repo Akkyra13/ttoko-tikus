@@ -101,13 +101,23 @@ class User
         );
     }
 
+    public function deleteUser(string $id)
+    {
+        DB::delete(
+            "delete from user where iduser = :id",
+            [
+                'id' => (int) $id,
+            ]
+        );
+    }
+
 
     public function checkPassword(int $id, string $string): bool
     {
         $pass = DB::selectOne(
         "select password_hash from user where iduser = :id",
             [
-                'id' => $id
+                'id' => $id,
             ]
         );
 

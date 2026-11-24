@@ -51,7 +51,7 @@
             <td> {{ $d->Vendor }} </td>
             <td> {{ $d->Status }} </td>
             <td> <a href="{{ route('vendor.edit', $d->ID_Vendor) }}"> Edit </a>
-                <form class="inline" action="{{ route('vendor.destroy', $d->ID_Vendor) }}" method="POST" onsubmit="return confirm('Hapus {{ $d->Vendor }}?')">
+                <form class="inline" action="{{ route('vendor.destroy', $d->ID_Vendor) }}" method="POST" onsubmit="return confirm({{ Js::from('Hapus ' . $d->Vendor . '?') }})">
                     @csrf
                     @method('DELETE')
                     <button type="submit" > Hapus </button>

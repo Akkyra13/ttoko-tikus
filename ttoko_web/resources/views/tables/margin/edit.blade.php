@@ -17,7 +17,7 @@
 <label> Status </label>
     <select name="status">
         @foreach($status as $k => $label)
-            <option value="{{ $k }}" @selected((string) old('status', $data->status_id) === (string) $k)> {{ $label }} </option>
+            <option value="{{ $k }}" @selected((string) old('status', $data->status_id) === (string) $k) @disabled((int) $data->status_id === 1 && (int) $k === 0)> {{ $label }} </option>
         @endforeach
     </select>
 

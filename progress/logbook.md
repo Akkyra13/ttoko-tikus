@@ -3,39 +3,41 @@
 Rombak count = 4
 
 
-| tanggal | jam | aktifitas | kendala |
-|:---:|:---:|:---|:---|
-| 30 September | 14:00 - 16:00 | DDL bikin tabel 1 sampe 10 | query buffer lupa di save |
-| 2 Oktober | 10:00 - 10:30 | selesein DDL | query buffer lupa di save |
-| 3 Oktober | 16:00 - 18:00 | DML masukkin data ke 2 tabel data masters | lupa cara hashing untuk password pengguna; ganti nama kolom dan data type dengan constraint not null password ke password_hash di tabel user|
-| 4 Oktober | 5:30 - 6:30 | Selesaiin DML(selain tabel barang) | query buffer lupa di save |
-| 5 Oktober | 11:30 - 13:00 | menentukan barang yang mau dijual dan meneyelsaikan DML | salah masukkin data, harus truncate tabel barang |
-| 15 Oktober | 11:40 - 12:10 | membuat tabel view untuk setiap tabel data utama | jujur masih bingung ini kolom hukum dan status untuk vendor maskudnya apa |
-| 16 Oktober | 8:00 - 8:30 | bikin repo github dan rapihin folder proyek | baru belajar make github hehe |
-| 19 Oktober | 20:00 - 20:30 | ngedit isi tabel vendor dan bikin view | kebanyakan baris dan salah value, jadi bikin ulang isi dari tabel vendor |
-| 22 Oktober | 9:00 - 11:00 | setup development framework | agak indecisive dikit |
-| 22 Oktober | 11:30 - 14:00 | bikin struktur awal website | jujur blum ada gambaran, cmn masukkin yang sekiranya butuh |
-| 22 Oktober | 15:00 - 16:30 | lanjutin struktur | LUPA CARA BIKIN NAVIGASI WEBSITE |
-| 24 Oktober | 10:50 - 11:30 | bikin interfase user | per variable variable an ini membingungkan klo ga bisa liat langsung output yh |
-| 26 Oktober | 13:40 - 16:30 | bikin struktur mvc | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa |
-| 29 Oktober | 7:40 - 10:00 | bikin function aktifasi() | tipe data status di vendor make char?? ku ganti tinyint biar seragam sama kolom 'status' di tabel lain |
-| 30 Oktober | 21:00 - 21:50 | bikin stored procedure barangTersedia() dan benerin view tabel barang | kemaren update sistem terus rusak semua hyprland ku... ngungsi ge GNOME utk sementara |
-| 2 November | 13:30 - 14:00 | merubah tabel role dan bikin 2 trigger | alhamdulilah aman |
-| 2 November | 15:30 - 16:30 | masi benerin interface | MVC membingungkan |
-| 3 November | 6:30 - 8:15 | lengkapin front end; menyesuaikan beberapa tabel view | masi banyak yang harus di declare manual, bisa di optimasi lagi harusnya |
-| 3 November | 9:40 - 10:45 | bikin function priceFormat | forloop harus dalem function jd harus drop create setiap nyoba output. dan ga bisa create or replace juga...  |
-| 3 November | 12:00 - 12:30 | polishing function priceFormat | tiba-tiba ga lulus logpro |
-| 4 November | 12:00 - 12:40 | bikin fitur filter utk beberapa tabel | collation nya beda, db sama laravel |
-| 8 November | 7:20 - 10:00 | rapihin halaman tabel | rombak semuah biar bs make resource model. sial |
-| 13 November | 7:00 - 9:00 | nambah trigger klo ada yg ganti role juga ngitung role_count; websitenya rombak lagi...; | rombak semuah lagi... ternyata beberapa kepake eloquent ga sengaja |
-| 14 November | 5:45 - 8:23 | lanjut proses rombak | rombak *LAGIH* krn ga sengaja beberapa make query builder |
-| 17 November | 9:55 - 16:00 | interface barang dengan edit, tambah, dan filter(belum store sm update);  | jujur cape ngerombak lagi, ku kerjain dari awal aja |
-| 18 November | 12:00 - 14:37 | nambahin default di kolom status tabel barang; bikin update untuk interface barang; migrasi dengan laravel DB | ganti, ga mau make connection PDO |
-| 18 November | 19:30 - 19:50 | bikin create untuk tabel barang | mana object? mana array? mana const? aaaaaaa |
-| 18 November | 20:00 - 21:10 | selesain bikin create dan store untuk tabel barang | belajar html |
-| 19 November | 8:00 - 9:30 | bikin crud utk tabel satuan | niatnya tabel user tp salah buka file gpp lha |
-| 19 November | 11:40 - 14:00 | bikin crud utk tabel user | jujurly ini penamaan variabel butuh yang bisa di liat secara langsung; validasi password ribet amat alamak |
-| 19 November | 16:00 - 17:30 | bikin crud utk sisa tabel data master | pegel banyak ngaruh performa men.. |
-| 23 November | 15:00 - 17:30 | bikin login | i miss eloquent models |
+| NO | tanggal | jam | aktifitas | kendala |
+|:---:|:---:|:---:|:---|:---|
+| 1 | 30 September | 14:00 - 16:00 | DDL bikin tabel 1 sampe 10 | query buffer lupa di save |
+| 2 | 2 Oktober | 10:00 - 10:30 | selesein DDL | query buffer lupa di save |
+| 3 | 3 Oktober | 16:00 - 18:00 | DML masukkin data ke 2 tabel data masters | lupa cara hashing untuk password pengguna; ganti nama kolom dan data type dengan constraint not null password ke password_hash di tabel user|
+| 4| 4 Oktober | 5:30 - 6:30 | Selesaiin DML(selain tabel barang) | query buffer lupa di save |
+| 5 | 5 Oktober | 11:30 - 13:00 | menentukan barang yang mau dijual dan meneyelsaikan DML | salah masukkin data, harus truncate tabel barang |
+| 6 | 15 Oktober | 11:40 - 12:10 | membuat tabel view untuk setiap tabel data utama | jujur masih bingung ini kolom hukum dan status untuk vendor maskudnya apa |
+| 7 | 16 Oktober | 8:00 - 8:30 | bikin repo github dan rapihin folder proyek | baru belajar make github hehe |
+| 8 | 19 Oktober | 20:00 - 20:30 | ngedit isi tabel vendor dan bikin view | kebanyakan baris dan salah value, jadi bikin ulang isi dari tabel vendor |
+| 9 | 22 Oktober | 9:00 - 11:00 | setup development framework | agak indecisive dikit |
+| 10 | 22 Oktober | 11:30 - 14:00 | bikin struktur awal website | jujur blum ada gambaran, cmn masukkin yang sekiranya butuh |
+| 11 | 22 Oktober | 15:00 - 16:30 | lanjutin struktur | LUPA CARA BIKIN NAVIGASI WEBSITE |
+| 12 | 24 Oktober | 10:50 - 11:30 | bikin interfase user | per variable variable an ini membingungkan klo ga bisa liat langsung output yh |
+| 13 | 26 Oktober | 13:40 - 16:30 | bikin struktur mvc | AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa |
+| 14 | 29 Oktober | 7:40 - 10:00 | bikin function aktifasi() | tipe data status di vendor make char?? ku ganti tinyint biar seragam sama kolom 'status' di tabel lain |
+| 15 | 30 Oktober | 21:00 - 21:50 | bikin stored procedure barangTersedia() dan benerin view tabel barang | kemaren update sistem terus rusak semua hyprland ku... ngungsi ge GNOME utk sementara |
+| 16 | 2 November | 13:30 - 14:00 | merubah tabel role dan bikin 2 trigger | alhamdulilah aman |
+| 17 | 2 November | 15:30 - 16:30 | masi benerin interface | MVC membingungkan |
+| 18 | 3 November | 6:30 - 8:15 | lengkapin front end; menyesuaikan beberapa tabel view | masi banyak yang harus di declare manual, bisa di optimasi lagi harusnya |
+| 19 | 3 November | 9:40 - 10:45 | bikin function priceFormat | forloop harus dalem function jd harus drop create setiap nyoba output. dan ga bisa create or replace juga...  |
+| 20 | 3 November | 12:00 - 12:30 | polishing function priceFormat | tiba-tiba ga lulus logpro |
+| 21 | 4 November | 12:00 - 12:40 | bikin fitur filter utk beberapa tabel | collation nya beda, db sama laravel |
+| 22 | 8 November | 7:20 - 10:00 | rapihin halaman tabel | rombak semuah biar bs make resource model. sial |
+| 23 | 13 November | 7:00 - 9:00 | nambah trigger klo ada yg ganti role juga ngitung role_count; websitenya rombak lagi...; | rombak semuah lagi... ternyata beberapa kepake eloquent ga sengaja |
+| 24 | 14 November | 5:45 - 8:23 | lanjut proses rombak | rombak *LAGIH* krn ga sengaja beberapa make query builder |
+| 25 | 17 November | 9:55 - 16:00 | interface barang dengan edit, tambah, dan filter(belum store sm update);  | jujur cape ngerombak lagi, ku kerjain dari awal aja |
+| 26 | 18 November | 12:00 - 14:37 | nambahin default di kolom status tabel barang; bikin update untuk interface barang; migrasi dengan laravel DB | ganti, ga mau make connection PDO |
+| 27 | 18 November | 19:30 - 19:50 | bikin create untuk tabel barang | mana object? mana array? mana const? aaaaaaa |
+| 28 | 18 November | 20:00 - 21:10 | selesain bikin create dan store untuk tabel barang | belajar html |
+| 29 | 19 November | 8:00 - 9:30 | bikin crud utk tabel satuan | niatnya tabel user tp salah buka file gpp lha |
+| 30 | 19 November | 11:40 - 14:00 | bikin crud utk tabel user | jujurly ini penamaan variabel butuh yang bisa di liat secara langsung; validasi password ribet amat alamak |
+| 31 | 19 November | 16:00 - 17:30 | bikin crud utk sisa tabel data master | pegel banyak ngaruh performa men.. |
+| 32 | 23 November | 15:00 - 17:00 | bikin login | i miss eloquent models |
+| 33 | 24 November | 4:40 - 6:00 | tabel pengadaan | AAAAAAAAAAAAAAAA |
+| 34 | 24 November | 9:30 - 12:00 | some bug fixes; tabel pengadaan setengah | butuh controller tersendiri untuk tabel detil ternyata |
 
 

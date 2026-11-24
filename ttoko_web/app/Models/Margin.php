@@ -55,6 +55,15 @@ class Margin
     public function updateMargin(array $d, int $id): void
     {
         DB::transaction(function () use ($d, $id) {
+
+            $current = DB::selectOne('select status from margin_penjualan where idmargin_penjualan = :id for update',
+                ['id' => $id]
+            );
+
+            if ($current === null || ((int) $current->status === 1 and (int) $d['status'] === 0)) {
+                return false;
+            }
+
             DB::update(
                 "update margin_penjualan
                 set persen = :persen, status = if(:status = 1, status, 0)
@@ -69,6 +78,7 @@ class Margin
             if ((int) $d['status'] === 1) {
                 $this->aktifkan($id);
             }
+            return true;
         });
     }
 
@@ -77,11 +87,18 @@ class Margin
         DB::statement("call aktifkanMargin(:id)", ['id' => $id]);
     }
 
-    public function deleteMargin(int $id): int
+    public function deleteMargin(int $id): bool
     {
-        return DB::delete(
-            "delete from margin_penjualan where idmargin_penjualan = :id",
+        $query = DB::delete(
+            "delete from margin_penjualan where idmargin_penjualan = :id and status = 0",
             ['id' => $id]
         );
+
+        if (!$query === 0) {
+            return true;
+        }
+
+        return false;
+
     }
 }

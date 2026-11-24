@@ -112,8 +112,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = (new Barang)->deleteItem($id);
-        return redirect()->route('barang.index')
+        $data = (new User)->deleteUser($id);
+        return redirect()->route('user.index')
             ->with('success', 'Item Removed');
     }
 }

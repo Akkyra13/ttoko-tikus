@@ -57,7 +57,7 @@
             <td> {{ $d->Stok }} </td>
             <td> {{ $d->Harga }} </td>
             <td> <a href="{{ route('barang.edit', $d->idbarang) }}"> Edit </a>
-                <form class="inline" action="{{ route('barang.destroy', $d->idbarang) }}" method="POST" onsubmit="return confirm('Hapus {{ $d->Nama_Barang }}?')">
+                <form class="inline" action="{{ route('barang.destroy', $d->idbarang) }}" method="POST" onsubmit="return confirm({{ Js::from('Hapus ' . $d->Nama_Barang . '?') }})">
                     @csrf
                     @method('DELETE')
                     <button type="submit" > Hapus </button>

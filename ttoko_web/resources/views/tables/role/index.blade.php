@@ -42,7 +42,7 @@
             <td> {{ $d->Role }} </td>
             <td> {{ $d->Users }} </td>
             <td> <a href="{{ route('role.edit', $d->ID_Role) }}"> Edit </a>
-                <form class="inline" action="{{ route('role.destroy', $d->ID_Role) }}" method="POST" onsubmit="return confirm('Hapus {{ $d->Role }}?')">
+                <form class="inline" action="{{ route('role.destroy', $d->ID_Role) }}" method="POST" onsubmit="return confirm({{ Js::from('Hapus ' . $d->Role . '?') }})">
                     @csrf
                     @method('DELETE')
                     <button type="submit" > Hapus </button>
